@@ -2,7 +2,7 @@ import getProducts from './services/getData.js';
 import generateProduct from './generateProducts.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    // Обработка данных при переключении формата цены
     const switchUnit = (e) => {
         const target = e.target;
         const item = target.closest('.products_page');
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }  
         }
     }
-
+    // Получение новых данных при переключении формата цены
     const getDataPrice = (item, id, type='За м. кв.') => {
         const priceClub = item.querySelector('.goldPrice');
         const retailPrice = item.querySelector('.retailPrice');
@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
+    // Изменение количсетва товара
     const updateCount = (e) => {  
         const target = e.target;      
         const stepper = target.closest('.stepper');
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             countValue.value > 1 ? countValue.value = +countValue.value - 1 : countValue.value = 1;
         }
     }
-
+    // Генерация карточек на странице и присвоение функций
     generateProduct(() => {
         const productItem = document.querySelectorAll('.products_page');
         productItem.forEach(item => {  

@@ -1,6 +1,7 @@
 import getProducts from './services/getData.js';
 const generateProduct = (callback) => {
     const productSection = document.querySelector('#products_section');
+    // Получение данных
     getProducts.getData().then(data => {
         data.map(item => {
            const {productId, 
@@ -16,14 +17,15 @@ const generateProduct = (callback) => {
                   priceGoldAlt,
                   priceRetailAlt,} = item;
            const dataImg = primaryImageUrl.toLowerCase().split('');
+           // Обработкаа изображения
            const img = dataImg.slice(0, -4).concat(['_220x220_1'].concat(dataImg.slice(-4))).join('');
-
+            // Обработкаа тэгов
            const tags = assocProducts.split(';').filter(item => item).map((item => {
                 if(!item) return;
                 const tag = `<a href="#" class="url--link">${item.trim()}</a>`;          
                 return tag;
             })); 
-            
+            // Обработка unit-desc
             const unitUpdate = () => {
                 if(unitFull === 'упаковка'){
                     return(
@@ -38,6 +40,7 @@ const generateProduct = (callback) => {
                 }
             }
            const unitRes = unitUpdate();
+           // Пост верстки
            const product = `
                 <div class="products_page pg_0" data-product-id=${productId}>
                     <div class="product product_horizontal">                                
