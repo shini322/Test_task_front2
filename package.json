@@ -4,20 +4,39 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@babel/runtime": "^7.12.1",
     "babel-loader": "^8.1.0",
     "webpack": "^5.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "webpack-cli": "^4.1.0"
   },
   "babel": {
     "presets": [
       "@babel/env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "regenerator": true
+        }
+      ]
     ]
   },
+  "browserslist": [
+    "last 1 version",
+    "> 0.25%",
+    "IE 10",
+    "chrome >= 35",
+    "safari >= 8",
+    "opera >= 20",
+    "firefox >= 30"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
