@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const getDataPrice = (item, id, type='За м. кв.') => {
         const priceClub = item.querySelector('.goldPrice');
         const retailPrice = item.querySelector('.retailPrice');
-        getProducts.getData().then(data => {
+        getProducts.getData()
+        .then(data => {
             data.forEach(item => {
                 if(item.productId === id){
                     switch (type){
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
         })
+        .catch(error => console.log(new Error(`Не удалось получить данные при переключении формата цены, ошибка: ${error}`)))
     }
     // Изменение количсетва товара
     const updateCount = (e) => {  

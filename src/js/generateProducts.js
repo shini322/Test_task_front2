@@ -2,7 +2,8 @@ import getProducts from './services/getData.js';
 const generateProduct = (callback) => {
     const productSection = document.querySelector('#products_section');
     // Получение данных
-    getProducts.getData().then(data => {
+    getProducts.getData()
+    .then(data => {
         data.map(item => {
            const {productId, 
                   code, 
@@ -124,7 +125,8 @@ const generateProduct = (callback) => {
             
         })
         callback(); 
-    });
+    })
+    .catch(error => console.log(new Error(`Ну удалось построить карточки товаров, ошибка ${error}`)));
 }
 
 export default generateProduct;
