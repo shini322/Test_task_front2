@@ -1,6 +1,8 @@
 import getProducts from './services/getData.js';
 import generateProduct from './generateProducts.js';
 
+export const fixPrice = (value) => value.toFixed();
+
 document.addEventListener('DOMContentLoaded', () => {
     // Обработка данных при переключении формата цены
     const switchUnit = (e) => {
@@ -32,12 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(item.productId === id){
                     switch (type){
                         case 'За м. кв.':
-                            priceClub.textContent = item.priceGoldAlt;
-                            retailPrice.textContent = item.priceRetailAlt;
+                            priceClub.textContent = fixPrice(item.priceGoldAlt);
+                            retailPrice.textContent = fixPrice(item.priceRetailAlt);
                             break;
                         case 'За упаковку':
-                            priceClub.textContent = item.priceGold;
-                            retailPrice.textContent = item.priceRetail;
+                            priceClub.textContent = fixPrice(item.priceGold);
+                            retailPrice.textContent = fixPrice(item.priceRetail);
                             break;                        
                     }
                 }
