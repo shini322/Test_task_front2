@@ -1,7 +1,7 @@
 import getProducts from './services/getData.js';
 import generateProduct from './generateProducts.js';
 
-export const fixPrice = (value) => value.toFixed();
+export const roundingPrice = (value) => value.toFixed();
 
 document.addEventListener('DOMContentLoaded', () => {
     // Обработка данных при переключении формата цены
@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(item.productId === id){
                     switch (type){
                         case 'За м. кв.':
-                            priceClub.textContent = fixPrice(item.priceGoldAlt);
-                            retailPrice.textContent = fixPrice(item.priceRetailAlt);
+                            priceClub.textContent = roundingPrice(item.priceGoldAlt);
+                            retailPrice.textContent = roundingPrice(item.priceRetailAlt);
                             break;
                         case 'За упаковку':
-                            priceClub.textContent = fixPrice(item.priceGold);
-                            retailPrice.textContent = fixPrice(item.priceRetail);
+                            priceClub.textContent = roundingPrice(item.priceGold);
+                            retailPrice.textContent = roundingPrice(item.priceRetail);
                             break;                        
                     }
                 }
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.log(new Error(`Не удалось получить данные при переключении формата цены, ошибка: ${error}`)))
     }
-    // Изменение количсетва товара
+    // Изменение количества товара
     const updateCount = (e) => {  
         const target = e.target;      
         const stepper = target.closest('.stepper');

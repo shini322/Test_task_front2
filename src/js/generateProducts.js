@@ -1,5 +1,5 @@
 import getProducts from './services/getData.js';
-import {fixPrice} from './index.js'
+import {roundingPrice} from './index.js'
 
 const generateProduct = (callback) => {
     
@@ -20,8 +20,8 @@ const generateProduct = (callback) => {
                   isActive,
                   priceGoldAlt,
                   priceRetailAlt,} = item;
-           const dataImg = primaryImageUrl.toLowerCase().split('');
-           // Обработкаа изображения
+             // Обработкаа изображения
+           const dataImg = primaryImageUrl.toLowerCase().split('');          
            const img = dataImg.slice(0, -4).concat(['_220x220_1'].concat(dataImg.slice(-4))).join('');
             // Обработкаа тэгов
            const tags = assocProducts.split(';').filter(item => item).map((item => {
@@ -76,7 +76,7 @@ const generateProduct = (callback) => {
                         </div>
                         <p class="product_price_club_card">
                             <span class="product_price_club_card_text">По карте<br>клуба</span>
-                            <span class="goldPrice">${fixPrice(priceGoldAlt)}</span>
+                            <span class="goldPrice">${roundingPrice(priceGoldAlt)}</span>
                             <span class="rouble__i black__i">
                                 <svg version="1.0" id="rouble__b" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="30px" height="22px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rouble_black"></use>
@@ -84,7 +84,7 @@ const generateProduct = (callback) => {
                                 </span>
                         </p>
                         <p class="product_price_default">
-                            <span class="retailPrice">${fixPrice(priceRetailAlt)}</span>
+                            <span class="retailPrice">${roundingPrice(priceRetailAlt)}</span>
                             <span class="rouble__i black__i">
                                 <svg version="1.0" id="rouble__g" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="30px" height="22px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rouble_gray"></use>
@@ -92,7 +92,7 @@ const generateProduct = (callback) => {
                                 </span>
                         </p>
                         <div class="product_price_points">
-                            <p class="ng-binding">Можно купить за ${priceGoldAlt} балла</p>
+                            <p class="ng-binding">Можно купить за ${roundingPrice(priceGoldAlt)} балла</p>
                         </div>
                         <div class="list--unit-padd"></div>
                         <div class="list--unit-desc">
